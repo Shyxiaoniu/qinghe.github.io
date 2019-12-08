@@ -45,13 +45,49 @@ $(document).ready(function(){
 	$("#button").click(function(){
 		$("#iframe1").attr("src", "http://post.iot.o8y.net/Pro_post/?type=4&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&IO02=IO02=0");
 		$("#img1").attr("src", "image/lighton.png");
+		$("#iframe2").attr("src", "http://get.iot.o8y.net/Pro_Get/?type=4&way=value&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&sel_io=IO02");
+
 });
 	$("#button2").click(function(){
 		$("#iframe1").attr("src", "http://post.iot.o8y.net/Pro_post/?type=4&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&IO02=IO02=1");
-			$("#img1").attr("src", "image/lightoff.png");
+		$("#img1").attr("src", "image/lightoff.png");
+		$("#iframe2").attr("src", "http://get.iot.o8y.net/Pro_Get/?type=4&way=value&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&sel_io=IO02");
+
 	});
 });
 </script>
+
+<script>
+/* 鼠标特效 */
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("❤","❤","❤","❤","❤","❤","❤","❤","❤","❤","❤","❤");
+        var $i = $("<span></span>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
 
 </head>
 <body>
@@ -72,8 +108,9 @@ $(document).ready(function(){
 	</div>
 		<tr>
 			<td colspan="2" style='text-align:center' >
-				<!-- <script src = "http://get.iot.o8y.net/Pro_Get/?type=4&way=JsVal&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&sel_io=IO02">
-				</script> -->
+			<!--	<script src="http://get.iot.o8y.net/Pro_Get/?type=4&way=JsVal&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&sel_io=IO02"> -->			
+					<iframe id="iframe2" src="http://get.iot.o8y.net/Pro_Get/?type=4&way=value&dev_uid=558372389&api_key=8A86F247CBE47F9A8DC69E8BE0D62B53&sel_io=IO02"></iframe>	
+				</script> 
 			</td>
 		</tr>
 	</div>
